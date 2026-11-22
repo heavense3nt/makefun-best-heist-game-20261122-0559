@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Gilded Vault — a midnight heist</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0d0b12; font-family: Georgia, 'Times New Roman', serif; overflow: hidden; }
+  #wrap { width: 1280px; margin: 0 auto; overflow: hidden; }
+  #hud {
+    display: flex; align-items: center; gap: 12px;
+    height: 64px; padding: 0 12px; box-sizing: border-box;
+    background: #14121c; color: #e8e4da; border-bottom: 2px solid #3a3247;
+  }
+  #level-name { font-size: 16px; font-weight: bold; color: #ffd75a; white-space: nowrap; }
+  #alarm-wrap { flex: 1; min-width: 180px; }
+  #alarm-text { font-size: 12px; letter-spacing: 1px; color: #ffb020; margin-bottom: 3px; }
+  #alarm-bar { height: 12px; background: #2a2536; border: 1px solid #4a4360; border-radius: 6px; overflow: hidden; }
+  #alarm-fill { height: 100%; width: 0%; background: #57c785; transition: width 0.15s linear; }
+  .stat { font-size: 15px; white-space: nowrap; }
+  #loot { color: #ffd75a; }
+  #timer { color: #9fd0ff; }
+  #tools { display: flex; gap: 10px; font-size: 13px; color: #b9b3c9; }
+  #objective { font-size: 13px; color: #a9f5c3; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #hint { height: 22px; line-height: 22px; padding: 0 16px; font-size: 13px; color: #b9b3c9; background: #14121c; }
+  #game { display: block; width: 1280px; height: 704px; touch-action: none; }
+  /* Read aloud, never shown: the status line screen readers announce. */
+  #status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div id="hud">
+    <span id="level-name">The Gilded Vault</span>
+    <div id="alarm-wrap">
+      <div id="alarm-text">ALARM 0%</div>
+      <div id="alarm-bar"><div id="alarm-fill"></div></div>
+    </div>
+    <span class="stat" id="loot">LOOT $0</span>
+    <span class="stat" id="timer">DAWN IN 5:00</span>
+    <span id="tools"><span id="emp-count">EMP ×2</span><span id="smoke-count">SMOKE ×2</span></span>
+    <span id="objective">○ Steal the star loot</span>
+  </div>
+  <div id="hint">WASD move · Shift sneak · E grab/pick · Q smoke · F EMP</div>
+  <canvas id="game" aria-label="The Gilded Vault: a top-down stealth heist. Sneak past guards and cameras, steal the star loot, and reach the exit van."></canvas>
+  <p id="status" role="status" aria-live="polite"></p>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
